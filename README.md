@@ -1,5 +1,7 @@
 # Favme
 
+![Favme screenshot](https://user-images.githubusercontent.com/80735737/190847513-56071ae9-0297-48c6-b796-afa8679d4037.png)
+
 ## _Favorite Link Storage Application_
 
 Favme is an application that help you store favorite link based on your own self-created categories and labels,
