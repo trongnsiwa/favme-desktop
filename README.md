@@ -18,7 +18,7 @@ Favme uses a number of open source projects to work properly:
 
 ## Installation
 
-Favme requires [Node.js](https://nodejs.org/), [Rust](https://www.rust-lang.org/learn/get-started) and [Build Tools](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2019) and [Yarn](https://yarnpkg.com/) to run.
+Favme requires [Node.js](https://nodejs.org/), [Rust](https://www.rust-lang.org/learn/get-started), [Build Tools](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2019) and [Yarn](https://yarnpkg.com/) to run.
 
 Open command-line.
 
@@ -28,6 +28,8 @@ Install the dependencies and devDependencies and start the server.
 cd favme-desktop
 yarn install
 ```
+
+Create your own .env file with DATABASE_URL which is MongoDB connection string.
 
 Build and export the app.
 
