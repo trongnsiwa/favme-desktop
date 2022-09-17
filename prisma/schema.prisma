@@ -1,0 +1,59 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "mongodb"
+    url      = env("DATABASE_URL")
+}
+
+model Category {
+    id          String     @id @default(auto()) @map("_id") @db.ObjectId
+    name        String
+    description String
+    slug        String
+    cover       String
+    color       String
+    createdAt   DateTime   @default(now())
+    updatedAt   DateTime   @updatedAt
+    favorites   Favorite[]
+
+    @@unique([name])
+}
+
+model Favorite {
+    id          String @id @default(auto()) @map("_id") @db.ObjectId
+    name        String @unique
+    description String
+    slug        String
+    cover       String
+    link        String
+
+    createdAt  DateTime       @default(now())
+    updatedAt  DateTime       @updatedAt
+    status     FavoriteStatus @default(UNFAVORED)
+    category   Category       @relation(fields: [categoryId], references: [id])
+    categoryId String         @db.ObjectId
+    labelIDs   String[]       @db.ObjectId
+    labels     Label[]        @relation(fields: [labelIDs], references: [id])
+
+    @@unique([name, categoryId])
+}
+
+enum FavoriteStatus {
+    UNFAVORED
+    FAVORED
+}
+
+model Label {
+    id   String @id @default(auto()) @map("_id") @db.ObjectId
+    name String @unique
+
+    createdAt   DateTime   @default(now())
+    updatedAt   DateTime   @updatedAt
+    favoriteIDs String[]   @db.ObjectId
+    favorites   Favorite[] @relation(fields: [favoriteIDs], references: [id])
+}
